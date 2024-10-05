@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Tarea</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Editar Tarea</h1>
+    <form method="POST" action="/tasks/edit/{{ task.id }}">
+        <label for="name">Nombre:</label><br>
+        <input type="text" id="name" name="name" value="{{ task.name }}" required><br>
+        <label for="description">Descripción:</label><br>
+        <textarea id="description" name="description">{{ task.description }}</textarea><br>
+        <button type="submit">Actualizar</button>
+    </form>
+    <br>
+    <a href="{{ url_for('tasks.index') }}">Volver a la lista de tareas</a>
+</body>
+</html>
