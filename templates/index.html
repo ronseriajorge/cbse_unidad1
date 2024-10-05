@@ -9,7 +9,7 @@
 
     <!-- Formulario para crear una nueva tarea -->
     <h2>Crear nueva tarea!</h2>
-    <form method="POST" action="/tasks/create">
+    <form method="POST" action="/tasks">
         <label for="name">Nombre:</label><br>
         <input type="text" id="name" name="name" required><br>
         <label for="description">Descripción:</label><br>
@@ -25,6 +25,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Descripción</th>
+                <th>Acciones</th> 
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,14 @@
             <tr>
                 <td>{{ task.name }}</td>
                 <td>{{ task.description }}</td>
+                <td class="actions-column"> <!-- Aplicar la clase aquí -->
+                    <form method="GET" action="/tasks/edit/{{ task.id }}" style="display:inline;">
+                        <button type="submit">Editar</button>
+                    </form>
+                    <form method="POST" action="/tasks/delete/{{ task.id }}" style="display:inline;">
+                        <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar esta tarea?');">Eliminar</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
@@ -39,6 +48,5 @@
     {% else %}
     <p>No hay tareas creadas.</p>
     {% endif %}
-
 </body>
 </html>
