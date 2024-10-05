@@ -18,4 +18,5 @@ def create_task():
 
 @task_blueprint.route('/')
 def index():
-    return render_template('index.html')
+    tasks = TaskService.read_tasks()
+    return render_template('index.html', tasks=tasks)

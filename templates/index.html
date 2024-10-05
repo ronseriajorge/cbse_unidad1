@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ISBN</title>
+    <title>Listado de Tareas y Crear Nueva</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Tarea</h1>
+    <h1>Tareas</h1>
+
+    <!-- Formulario para crear una nueva tarea -->
+    <h2>Crear nueva tarea!</h2>
     <form method="POST" action="/tasks">
         <label for="name">Nombre:</label><br>
         <input type="text" id="name" name="name" required><br>
@@ -13,5 +16,29 @@
         <textarea id="description" name="description"></textarea><br>
         <button type="submit">Crear</button>
     </form>
+
+    <!-- Listado de tareas existentes -->
+    <h2>Listado de Tareas</h2>
+    {% if tasks %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.name }}</td>
+                <td>{{ task.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No hay tareas creadas.</p>
+    {% endif %}
+
 </body>
 </html>

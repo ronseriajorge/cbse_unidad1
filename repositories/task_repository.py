@@ -8,3 +8,9 @@ class TaskRepository:
         db.session.add(task)
         db.session.commit()
         return task
+    
+    @staticmethod
+    def read_tasks():
+        tasks = Task.query.all()
+        print(tasks)
+        return tasks
