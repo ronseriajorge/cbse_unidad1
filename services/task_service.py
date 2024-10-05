@@ -17,3 +17,7 @@ class TaskService:
     @staticmethod
     def edit_task(task_id, name, description):
         TaskRepository.update_task(task_id, name, description)
+
+    @staticmethod
+    def remove_task(task_id):
+        TaskRepository.delete_task(task_id)        

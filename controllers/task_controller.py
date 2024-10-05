@@ -30,6 +30,10 @@ def edit_task_post(task_id):
     TaskService.edit_task(task_id, name, description)
     return redirect(url_for('tasks.index'))
 
+@task_blueprint.route('/tasks/delete/<int:task_id>', methods=['POST'])
+def delete_task(task_id):
+    TaskService.remove_task(task_id)
+    return redirect(url_for('tasks.index'))
 
 @task_blueprint.route('/')
 def index():

@@ -25,3 +25,10 @@ class TaskRepository:
             task.name = name
             task.description = description
             db.session.commit()    
+
+    @staticmethod
+    def delete_task(task_id):
+        task = Task.query.get(task_id)
+        if task:
+            db.session.delete(task)
+            db.session.commit()
