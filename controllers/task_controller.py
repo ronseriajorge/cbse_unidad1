@@ -3,7 +3,7 @@ from services.task_service import TaskService
 
 task_blueprint = Blueprint('tasks', __name__)
 
-@task_blueprint.route('/tasks', methods=['POST'])
+@task_blueprint.route('/tasks/create', methods=['POST'])
 def create_task():
 
     data = request.form
